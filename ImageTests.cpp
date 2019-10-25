@@ -22,3 +22,19 @@ TEST(Image,userCtor)
      EXPECT_NE(i.pixels(),nullptr);
 }
 
+TEST(Image,setPixel)
+{
+    Image i(100,100);
+    i.setPixel(0,0,255,0,0); //set first pixel to red
+    unsigned char r,g,b;
+    i.getPixel(0,0,r,g,b);
+    EXPECT_EQ(r,255);
+    EXPECT_EQ(g,0);
+    EXPECT_EQ(b,0);
+
+    i.setPixel(10,10,255,128,64); //set first pixel to red
+    i.getPixel(0,0,r,g,b);
+    EXPECT_EQ(r,255);
+    EXPECT_EQ(g,128);
+    EXPECT_EQ(b,64);
+}
