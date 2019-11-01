@@ -33,7 +33,7 @@ TEST(Image,setPixel)
     EXPECT_EQ(b,0);
 
     i.setPixel(10,10,255,128,64); //set first pixel to red
-    i.getPixel(0,0,r,g,b);
+    i.getPixel(10,10,r,g,b);
     EXPECT_EQ(r,255);
     EXPECT_EQ(g,128);
     EXPECT_EQ(b,64);

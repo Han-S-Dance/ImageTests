@@ -16,7 +16,7 @@ Image::Image(const Image &_c)
 { m_width=_c.m_width;
   m_height=_c.m_height;
   m_channels=_c.m_channels;
-  m_pixels=std::make_unique<unsigned char> []>(m_width*m_height*m_channels);
+  m_pixels=std::make_unique<unsigned char []>(m_width*m_height*m_channels);
   memcpy(m_pixels.get(),_c.m_pixels.get(),m_width*m_height*m_channels);
 
 }
@@ -41,7 +41,7 @@ unsigned int Image::channels() const noexcept
 void Image::setPixel(unsigned int _x, unsigned int _y, unsigned char _r, unsigned char _g, unsigned char _b)
 {
 //calculate infex array for red (then +1 green +2 blue)
-size_t index=0;
+size_t index=(m_width*m_channels*_y)+m_channels*_x;
 m_pixels[index]=_r;
 m_pixels[index+1]=_g;
 m_pixels[index+2]=_b;
